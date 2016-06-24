@@ -1,6 +1,8 @@
 /* eslint max-len: 0 */
 import webpack from 'webpack';
 import baseConfig from './webpack.config.base';
+import autoprefixer from 'autoprefixer';
+import postcssImport from 'postcss-import';
 
 const config = {
   ...baseConfig,
@@ -25,21 +27,24 @@ const config = {
       ...baseConfig.module.loaders,
 
       {
-        test: /\.global\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?sourceMap'
-        ]
+        test: /\.css$/,
+        loader: "style-loader!css-loader!postcss-loader",
+        
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       },
 
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        ]
-      }
     ]
+  },
+
+  postcss(webpack) {
+    return [
+      postcssImport({
+        addDependencyTo: webpack,
+      }),
+    ];
   },
 
   plugins: [

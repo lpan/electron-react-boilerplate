@@ -5,7 +5,7 @@ import createLogger from 'redux-logger';
 import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import DevTools from '../views/wrapper/DevTools';
 
 const logger = createLogger({
   level: 'info',
