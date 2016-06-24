@@ -2,3 +2,4 @@ main.js
 main.development.js
 webpack.config.*.js
 package.js
+app/store/*
