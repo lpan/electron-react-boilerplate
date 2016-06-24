@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './containers/App';
-import HomePage from './containers/HomePage';
-import CounterPage from './containers/CounterPage';
+import {Route, IndexRoute} from 'react-router';
+import App from './views/wrapper/App';
+import HomePage from './views/HomePage';
+import CounterPage from './views/CounterPage';
 
 export default (
   <Route path="/" component={App}>
